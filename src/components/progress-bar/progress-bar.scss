@@ -1,0 +1,26 @@
+progress-bar {
+    display:block;
+    .pb-container {
+        width: 100%;
+        position: relative;
+        height: 24px;
+        display: block;
+        background: color($colors, light);
+        border-radius: 10px;
+        overflow: hidden;
+        border:1px solid darken(color($colors, light), 1%);
+        .pb-progress {
+            background: color($colors, secondary);
+            position:absolute;
+            width:0%;
+            top:0px;
+            bottom:0px;
+            left:0px;
+            max-width:100%;
+            transition: all .6s ease-out;
+            &.pb-progress-out {
+                background: color($colors, danger);
+            }
+        }
+    }
+}

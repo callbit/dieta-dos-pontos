@@ -1,0 +1,13 @@
+{
+  "name": "Dieta dos Pontos",
+  "short_name": "Dieta dos Pontos",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/imgs/ico.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }],
+  "background_color": "#16967b",
+  "theme_color": "#16967b"
+}

@@ -1,0 +1,70 @@
+<ion-header no-border>
+
+  <ion-toolbar color="primary">
+    <ion-title>Adicionar consumo</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="save()" novalidate>
+
+    <div padding>
+      <ion-list no-lines>
+
+        <ion-item class="item-input" *ngIf="parent">
+          <ion-label stacked>Comida</ion-label>
+          <ion-input type="hidden" formControlName="food_id" [value]="food.id"></ion-input>
+          <h2 item-content>{{parent?.name}} / {{food?.name}} ({{food?.unit}})</h2>
+        </ion-item>
+
+        <ion-item class="item-input" *ngIf="!parent">
+          <ion-label stacked>Comida</ion-label>
+          <ion-input type="hidden" formControlName="food_id" [value]="food.id"></ion-input>
+          <h2 item-content>{{food?.name}} ({{food?.unit}})</h2>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label stacked>Refeição</ion-label>
+          <ion-select formControlName="meal_id">
+            <ion-option *ngFor="let meal of (data.meals$ | async)" [value]="meal.id">{{ meal?.name }}</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Quantidade</ion-label>
+          <div item-content>
+            <ion-grid no-padding>
+              <ion-row>
+                <ion-col col-3>
+                  <a ion-button icon-only block color="danger" (click)="changeQuantity(-1)">
+                    <ion-icon name="remove"></ion-icon>
+                  </a>
+                </ion-col>
+                <ion-col>
+                  <ion-input type="number" pattern="[0-9]*" readonly formControlName="quantity"></ion-input>
+                </ion-col>
+                <ion-col col-3>
+                  <a ion-button icon-only block  (click)="changeQuantity(1)">
+                    <ion-icon name="add"></ion-icon>
+                  </a>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+
+        </ion-item>
+
+      </ion-list>
+
+      <button ion-button block color="dark" type="submit">Salvar</button>
+    </div>
+  </form>
+</ion-content>

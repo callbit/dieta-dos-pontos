@@ -1,0 +1,55 @@
+<ion-content>
+  <ion-navbar color="primary">
+    <ion-title text-center>Dieta dos Pontos</ion-title>
+  </ion-navbar>
+  <form [formGroup]="form" (ngSubmit)="signup()" novalidate>
+    <div padding-left padding-right>
+      <ion-list no-lines>
+        <h2 text-center>
+          Cadastre-se!
+        </h2>
+        <p text-center>Preencha seus dados para efetuar seu cadastro.</p>
+        <ion-grid no-padding>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Nome</ion-label>
+                <ion-input formControlName="name" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Email</ion-label>
+                <ion-input formControlName="email" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Senha</ion-label>
+                <ion-input formControlName="password" type="password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Repetir senha</ion-label>
+                <ion-input formControlName="password_repeat" type="password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div padding>
+          <button ion-button full color="dark" type="submit">Efetuar cadastro</button>
+        </div>
+      </ion-list>
+    </div>
+  </form>
+  <div padding>
+    <button ion-button full color="light" (click)="login()">Já tenho uma conta</button>
+  </div>
+</ion-content>

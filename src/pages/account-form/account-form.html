@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Editar Conta
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="save()" novalidate>
+    <div padding>
+      <ion-list no-lines>
+
+        <ion-grid no-padding>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Nome</ion-label>
+                <ion-input formControlName="name" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Data de nascimento</ion-label>
+                <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dob" cancelText="Cancelar" doneText="Ok"></ion-datetime>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Sexo</ion-label>
+                <ion-select formControlName="gender">
+                  <ion-option value="male">Masculino</ion-option>
+                  <ion-option value="female">Feminino</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Altura (cm)</ion-label>
+                <ion-input type="number" pattern="[0-9]*" formControlName="height"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Peso (kg)</ion-label>
+                <ion-input type="number" pattern="[0-9]*" formControlName="weight"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Nível de atividade</ion-label>
+                <ion-select formControlName="activity_level">
+                    <ion-option *ngFor="let level of activityLevels; let k = index" [value]="k+1">{{ level }}</ion-option>
+                  </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Email</ion-label>
+                <ion-input readonly formControlName="email" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <!--ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Senha</ion-label>
+                <ion-input formControlName="password" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Repetir senha</ion-label>
+                <ion-input formControlName="password_repeat" type="text"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row-->
+        </ion-grid>
+
+        <div padding>
+          <button ion-button full color="dark" type="submit">Atualizar cadastro</button>
+        </div>
+      </ion-list>
+    </div>
+  </form>
+
+</ion-content>

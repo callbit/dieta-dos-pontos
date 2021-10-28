@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Diário</ion-title>
+    <ion-buttons end>
+      <button class="button-calendar" (click)="openCalendar()" ion-button icon-left icon-right>
+        <ion-icon name="calendar"></ion-icon>
+        {{ (data.date$ | async) === today ? 'Hoje' : (data.date$ | async) | date:'dd/MM/yyyy' }}
+        <ion-icon name="ios-arrow-down"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingText="Puxe para sincronizar"
+      refreshingSpinner="crescent"
+      refreshingText="Sincronizando...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div text-center padding *ngIf="(data?.dashboard$ | async)?.meals?.length < 1">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  <div padding *ngIf="(data?.dashboard$ | async)?.meals?.length > 0">
+    <div class="info-container">
+      <p>
+        Você já utilizou
+        <strong>{{ (data?.dashboard$ | async)?.consumedPoints }}</strong> do total de
+        <strong>{{ (data?.dashboard$ | async)?.dailyPoints }}</strong>.
+      </p>
+      <div>
+        <progress-bar [current]="(data?.dashboard$ | async)?.consumedPoints" [total]="(data?.dashboard$ | async)?.dailyPoints"></progress-bar>
+      </div>
+    </div>
+
+    <ion-list no-lines>
+      <button *ngFor="let meal of (data?.dashboard$ | async)?.meals" (click)="meals(meal)" detail-none ion-item>
+        <h2>{{ meal?.name }}</h2>
+        <p>Sugerido de {{ meal?.mealPoint -1 }} a {{ meal?.mealPoint+1 + ' ' + ( meal?.mealPoint+1 > 1 ? 'pontos' : 'ponto')
+          }}.</p>
+        <ion-badge item-right [color]="meal?.consumePoints > 0 ? 'primary' : 'light'">{{ ( meal?.consumePoints > 1 ? meal?.consumePoints + ' pontos' : ( meal?.consumePoints > 0 ? (meal?.consumePoints
+          + ' ponto') : 'Nenhum ponto' )) }}</ion-badge>
+      </button>
+    </ion-list>
+  </div>
+
+</ion-content>

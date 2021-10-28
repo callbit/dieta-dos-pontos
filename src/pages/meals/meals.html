@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ meal?.name }}
+      <span>{{date | date:'dd/MM/yyyy'}}</span>
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div padding>
+    <div class="info-container">
+      <p>
+        Você já utilizou
+        <strong>{{ (data.mealInfo$(meal) | async)?.consumePoints }}</strong> do total de
+        <strong>{{ (data.mealInfo$(meal) | async)?.mealPoint + 1 }}</strong> recomendados.
+      </p>
+      <div>
+        <progress-bar [current]="(data.mealInfo$(meal) | async)?.consumePoints" [total]="(data.mealInfo$(meal) | async)?.mealPoint + 1"></progress-bar>
+      </div>
+    </div>
+    <div padding-bottom>
+      <button block ion-button icon-left (click)="openConsume()" color="primary">
+        <ion-icon name="add"></ion-icon> Adicionar
+      </button>
+    </div>
+    <ion-list no-lines>
+      <button ion-item *ngFor="let consume of (data.consumesByDay$ | async)" (click)="openActions(consume)" detail-none>
+        <h2>{{ consume?.food?.name }}</h2>
+        <p>{{ consume?.quantity }} {{ consume?.food?.unit }}{{ consume?.quantity > 1 ? 's' : '' }}</p>
+        <ion-badge item-right>{{ (consume?.quantity * consume?.food?.points) + ' ' + ( (consume?.quantity * consume?.food?.points) > 1 ? 'pontos'
+          : 'ponto') }}</ion-badge>
+      </button>
+    </ion-list>
+
+  </div>
+</ion-content>

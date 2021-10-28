@@ -1,0 +1,79 @@
+@media (min-width: 768px) {
+    .navbar-collapse.collapse {
+        width: 100%;
+    }
+}
+
+div.scaffold-action h2 {
+    margin-bottom: 0;
+    margin-top: 0;
+    display: inline-block;
+    line-height:34px;
+    vertical-align: top;
+
+}
+
+div.actions-wrapper {
+    margin-bottom: 0;
+    margin-top: 0;
+    display: inline-block;
+    line-height:34px;
+    vertical-align: top;
+}
+
+hr {
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.applayout {
+    text-align:center;
+    max-width: 320px;
+    display:block;
+    margin:0 auto;
+
+}
+
+.applayout h4 {
+    font-size: 18px;
+    text-align:center;
+}
+
+.applayout p {
+    font-size: 14px;
+    color: #999;
+    text-align:center;
+}
+
+.applayout label {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.applayout button {
+    background: #16967b;
+    color: #fff;
+    width:100%;
+    border-radius: 100px;
+}
+
+.applayout input {
+    border-radius: 100px;
+    border-color: #999;
+}
+
+.applayout .logo {
+    margin: 60px;
+}
+
+.search-filters {
+    margin:15px 0;
+} 
+
+.selectize-control.single .selectize-input:after {
+    display:none !important;
+}
+
+.scaffold-users-view th {
+    width:200px;
+}

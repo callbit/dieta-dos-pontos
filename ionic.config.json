@@ -1,0 +1,7 @@
+{
+  "name": "Dietas dos Pontos",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

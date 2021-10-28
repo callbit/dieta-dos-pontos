@@ -1,0 +1,22 @@
+{
+  "name": "seyconel-admin",
+  "homepage": "https://github.com/leoruhland/seyconel",
+  "authors": [
+    "Leonardo Ruhland <leoruhland@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1"
+  }
+}

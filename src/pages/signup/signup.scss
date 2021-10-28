@@ -1,0 +1,9 @@
+page-signup {
+    .card-header {
+        color: color($colors, dark);
+        font-size:2.5rem;
+    }
+    .content {
+        background-color: color($colors, primary);
+    }
+}

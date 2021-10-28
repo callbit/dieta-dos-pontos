@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Conta
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div padding>
+    <div class="info-container">
+      <h2>{{ (data?.profile$ | async)?.name }}</h2>
+      <p>
+        <strong>Idade:</strong>
+        {{ (data?.profile$ | async)?.age }} anos •
+        <strong>Sexo:</strong>
+        {{ (data?.profile$ | async)?.gender === 'male' ? 'Masculino' : 'Feminino' }}
+      </p>
+      <p>
+        <strong>Altura:</strong>
+        {{ (data?.profile$ | async)?.height }}m •
+        <strong>Peso:</strong>
+        {{ (data?.profile$ | async)?.weight }}kg
+      </p>
+      <p>
+        <strong>Nível de atividade:</strong>
+        {{ (data?.profile$ | async)?.activity_level ? activityLevels[(data?.profile$ | async)?.activity_level] : ''}}
+      </p>
+      <p>
+        <strong>IMC:</strong>
+        {{ (data?.profile$ | async)?.imc }}
+      </p>
+      <p>
+        <strong>Peso ideal:</strong>
+        Entre {{ (data?.profile$ | async)?.idealWeight[0] }}kg e {{ (data?.profile$ | async)?.idealWeight[1] }}kg
+      </p>
+      <div>
+      </div>
+    </div>
+
+    <ion-list no-lines>
+      <button (click)="form()" ion-item detail-none>
+        <h2>Dados Pessoais</h2>
+        <p>Editar seus dados pessoais.</p>
+        <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+      <button (click)="password()" ion-item detail-none>
+        <h2>Alterar senha</h2>
+        <p>Clique aqui para mudar sua senha.</p>
+        <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+      <button (click)="contact()" ion-item detail-none>
+        <h2>Entrar em contato</h2>
+        <p>Envie sua dúvida, sugestão e/ou reclamação.</p>
+        <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+      <button *ngIf="shareable" (click)="share()" ion-item detail-none>
+        <h2>Compartilhar</h2>
+        <p>Recomende o aplicativo para seus amigos.</p>
+        <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+      <button (click)="logout()" ion-item detail-none>
+        <h2>Sair da sua conta</h2>
+        <p>Será necessário fazer seu login novamente.</p>
+        <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+    </ion-list>
+    <p class="app-version" *ngIf="version">Dieta dos Pontos v{{ version }}</p>
+  </div>
+</ion-content>

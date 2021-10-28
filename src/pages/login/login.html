@@ -1,0 +1,44 @@
+<ion-content>
+  <ion-navbar color="primary">
+    <ion-title text-center>Dieta dos Pontos</ion-title>
+  </ion-navbar>
+  <form [formGroup]="form" (ngSubmit)="login()" novalidate>
+    <div padding-left padding-right>
+      <ion-list no-lines>
+        <h2 text-center>
+          Bem vindo!
+        </h2>
+        <p padding-left padding-right text-center>Preencha seus dados para efetuar seu login.</p>
+
+        <ion-grid no-padding>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Email</ion-label>
+                <ion-input formControlName="email" type="email"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label stacked>Senha</ion-label>
+                <ion-input formControlName="password" type="password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div padding>
+          <button ion-button full color="dark" type="submit">Entrar</button>
+        </div>
+        <div padding-left padding-right padding-bottom>
+          <button ion-button clear full small color="primary" (click)="forgot()" type="button">Esqueceu sua senha?</button>
+        </div>
+      </ion-list>
+    </div>
+  </form>
+
+  <div padding>
+    <button ion-button full color="light" (click)="signup()">Ainda não possuo conta</button>
+  </div>
+</ion-content>

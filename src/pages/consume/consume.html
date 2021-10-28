@@ -1,0 +1,36 @@
+<ion-header no-border>
+
+  <ion-toolbar color="primary">
+    <ion-title>Selecione o alimento</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-searchbar #searchInput placeholder="Pesquisar" (ionInput)="searchUpdate($event)" [(ngModel)]="searchTerm" [debounce]="750"></ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div padding text-center *ngIf="isLoading">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div padding [hidden]="isLoading">
+    <ion-list no-lines [virtualScroll]="foods" approxItemHeight="62px">
+      <button (tap)="openConsume(food)" tappable ion-item *virtualItem="let food" (press)="openConsume(food)" detail-none>
+        <h2>{{ food?.name }}</h2>
+        <p *ngIf="food?.children?.length > 0">{{ food?.children_txt }}</p>
+        <p *ngIf="!(food?.children?.length > 0)">{{ food?.unit }}</p>
+        <ion-badge *ngIf="food?.children?.length > 0" item-right>{{ food?.children?.length }}</ion-badge>
+        <ion-badge color="light" *ngIf="!(food?.children?.length > 0)" item-right>{{ food?.points + ' ' + ( food?.points > 1 ? 'pontos' : 'ponto') }}</ion-badge>
+      </button>
+    </ion-list>
+  </div>
+
+</ion-content>
